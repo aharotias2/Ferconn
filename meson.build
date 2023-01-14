@@ -1,13 +1,13 @@
-project('com.github.aharotias2.ferconn', 'vala', 'c', version: '1.0.0')
+project('com.github.aharotias2.petitconn', 'vala', 'c', version: '1.0.0')
 
 library(
-  'libferconn',
-  'src/ferconn_abstract_dao.vala',
-  'src/ferconn_column_set.vala',
-  'src/ferconn_gee_utils.vala',
-  'src/ferconn_sealed_map.vala',
-  'src/ferconn_sql_utils.vala',
-  'src/ferconn_value_utils.vala',
+  'petitconn',
+  'src/petitconn_dao.vala',
+  'src/petitconn_column_set.vala',
+  'src/petitconn_gee_utils.vala',
+  'src/petitconn_sealed_map.vala',
+  'src/petitconn_sql_utils.vala',
+  'src/petitconn_value_utils.vala',
   dependencies: [
     dependency('glib-2.0'),
     dependency('libgda-5.0'),
@@ -18,10 +18,10 @@ library(
 )
 
 column_set_tests = executable(
-  'ferconn_column_set_tests',
-  'tests/ferconn_column_set_tests.vala',
-  'src/ferconn_column_set.vala',
-  'src/ferconn_sealed_map.vala',
+  'petitconn_column_set_tests',
+  'tests/petitconn_column_set_tests.vala',
+  'src/petitconn_column_set.vala',
+  'src/petitconn_sealed_map.vala',
   dependencies: [
     dependency('glib-2.0'),
     dependency('libgda-5.0'),
@@ -31,14 +31,14 @@ column_set_tests = executable(
 )
 
 abstract_dao_tests = executable(
-  'ferconn_abstract_dao_tests',
-  'tests/ferconn_abstract_dao_tests.vala',
-  'src/ferconn_abstract_dao.vala',
-  'src/ferconn_column_set.vala',
-  'src/ferconn_sealed_map.vala',
-  'src/ferconn_sql_utils.vala',
-  'src/ferconn_gee_utils.vala',
-  'src/ferconn_value_utils.vala',
+  'petitconn_dao_tests',
+  'tests/petitconn_dao_tests.vala',
+  'src/petitconn_dao.vala',
+  'src/petitconn_column_set.vala',
+  'src/petitconn_sealed_map.vala',
+  'src/petitconn_sql_utils.vala',
+  'src/petitconn_gee_utils.vala',
+  'src/petitconn_value_utils.vala',
   dependencies: [
     dependency('glib-2.0'),
     dependency('libgda-5.0'),
@@ -47,5 +47,5 @@ abstract_dao_tests = executable(
   ]
 )
 
-test('ferconn_column_set_tests', column_set_tests, args: [])
-test('ferconn_abstract_dao_tests', abstract_dao_tests, args: [])
+test('petitconn_column_set_tests', column_set_tests, args: [])
+test('petitconn_abstract_dao_tests', abstract_dao_tests, args: [])

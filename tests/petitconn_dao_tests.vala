@@ -1,31 +1,31 @@
 /*
  *  Copyright 2023 Tanaka Takayuki (田中喬之)
  *
- *  This file is part of Ferconn.
+ *  This file is part of Petitconn.
  *
- *  Ferconn is free software: you can redistribute it and/or modify
+ *  Petitconn is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  Ferconn is distributed in the hope that it will be useful,
+ *  Petitconn is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with Ferconn.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with Petitconn.  If not, see <http://www.gnu.org/licenses/>.
  *
  *  Tanaka Takayuki <aharotias2@gmail.com>
  */
 
-class TestTable : Ferconn.ColumnSet {
+class TestTable : Petitconn.ColumnSet {
     public int id {
         get {
             return this["id"].get_int();
         }
         set {
-            this["id"] = Ferconn.ValueUtils.new_int_value(value);
+            this["id"] = Petitconn.ValueUtils.new_int_value(value);
         }
     }
 
@@ -34,7 +34,7 @@ class TestTable : Ferconn.ColumnSet {
             return this["name"].get_string();
         }
         set {
-            this["name"] = Ferconn.ValueUtils.new_string_value(value);
+            this["name"] = Petitconn.ValueUtils.new_string_value(value);
         }
     }
     
@@ -52,7 +52,7 @@ int main(string[] argv) {
             printerr("connection was not established\n");
             return 1;
         }
-        Ferconn.AbstractDao dao = new Ferconn.AbstractDao(conn);
+        Petitconn.Dao dao = new Petitconn.Dao(conn);
         
         // test insert
         TestTable dto1 = new TestTable();
