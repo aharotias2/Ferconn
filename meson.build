@@ -1,6 +1,8 @@
 project('com.github.aharotias2.petitconn', 'vala', 'c', version: '1.0.0')
 
-library(
+inc = include_directories('.')
+
+libpetitconn = shared_library(
   'petitconn',
   'src/petitconn_dao.vala',
   'src/petitconn_column_set.vala',
@@ -14,7 +16,13 @@ library(
     dependency('gee-0.8'),
     dependency('libxml-2.0')
   ],
+  include_directories: inc,
   install: true
+)
+
+libpetitconn_dep = declare_dependency(
+  include_directories: inc,
+  link_with: libpetitconn
 )
 
 column_set_tests = executable(
