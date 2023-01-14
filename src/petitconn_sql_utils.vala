@@ -41,8 +41,8 @@ namespace Petitconn.SqlUtils {
         var sql = new StringBuilder("select ");
         sql.append(string.joinv(", ", column_names)).append(" from ").append(table_name);
         Gee.List<string> where_clause = new Gee.ArrayList<string>();
-        foreach (string key in condition.keys) {
-            where_clause.add(SqlUtils.create_set_expression(key, condition[key]));
+        foreach (var entry in condition.entries) {
+            where_clause.add(SqlUtils.create_set_expression(entry.key, entry.value));
         }
         sql.append(" where ").append(string.joinv(" and ", where_clause.to_array()));
         debug("%s %s", sql.str, GeeUtils.map_string_value_to_string(condition));
@@ -68,9 +68,9 @@ namespace Petitconn.SqlUtils {
     private bool execute_insert(Gda.Connection conn, string table_name, Gee.Map<string, Value?> values) throws Error {
         SList<string> col_names = new SList<string>();
         SList<Value?> col_values = new SList<Value?>();
-        foreach (var key in values.keys) {
-            col_names.append(key);
-            col_values.append(values[key]);
+        foreach (var entry in values.entries) {
+            col_names.append(entry.key);
+            col_values.append(entry.value);
         }
         return conn.insert_row_into_table_v(table_name, col_names, col_values);
     }
