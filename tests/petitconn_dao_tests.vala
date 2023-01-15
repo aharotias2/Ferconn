@@ -22,7 +22,7 @@
 class TestTable : Petitconn.ColumnSet {
     public int id {
         get {
-            return this["id"].get_int();
+            return Petitconn.ValueUtils.get_int_or_zero(this["id"]);
         }
         set {
             this["id"] = Petitconn.ValueUtils.new_int_value(value);
@@ -31,7 +31,7 @@ class TestTable : Petitconn.ColumnSet {
 
     public string name {
         owned get {
-            return this["name"].get_string();
+            return Petitconn.ValueUtils.get_string_or_null(this["name"]);
         }
         set {
             this["name"] = Petitconn.ValueUtils.new_string_value(value);

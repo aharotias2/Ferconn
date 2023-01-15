@@ -47,5 +47,5 @@ void test_1() {
 void test_2() {
     var table = new WpTable();
     table["id"] = (long) 1;
-    print("%ld, %s\n", table["id"].get_long(), table["title"].get_string());
+    print("%ld, %s\n", table["id"].get_long(), Petitconn.ValueUtils.get_string_or_null(table["title"]));
 }

@@ -30,6 +30,7 @@ column_set_tests = executable(
   'tests/petitconn_column_set_tests.vala',
   'src/petitconn_column_set.vala',
   'src/petitconn_sealed_map.vala',
+  'src/petitconn_value_utils.vala',
   dependencies: [
     dependency('glib-2.0'),
     dependency('libgda-5.0'),
