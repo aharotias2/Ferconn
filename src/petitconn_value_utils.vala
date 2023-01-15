@@ -57,6 +57,34 @@ namespace Petitconn.ValueUtils {
         return val;
     }
     
+    public int get_int_or_zero(Value? val) {
+        return val == null ? 0 : val.get_int();
+    }
+    
+    public long get_long_or_zero(Value? val) {
+        return val == null ? 0 : val.get_long();
+    }
+    
+    public double get_double_or_zero(Value? val) {
+        return val == null ? 0.0 : val.get_double();
+    }
+    
+    public float get_float_or_zero(Value? val) {
+        return val == null ? 0.0f : val.get_float();
+    }
+    
+    public int64 get_int64_or_zero(Value? val) {
+        return val == null ? 0 : val.get_int64();
+    }
+    
+    public uint64 get_uint64_or_zero(Value? val) {
+        return val == null ? 0 : val.get_uint64();
+    }
+    
+    public string? get_string_or_null(Value? val) {
+        return val == null ? null : val.get_string();
+    }
+    
     public string to_string(Value? src) {
         if (src == null) {
             return "null";

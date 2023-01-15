@@ -55,5 +55,6 @@ abstract_dao_tests = executable(
   ]
 )
 
-test('petitconn_column_set_tests', column_set_tests, args: [])
+test('petitconn_column_set_tests', column_set_tests, args: ['1'])
+test('petitconn_column_set_tests', column_set_tests, args: ['2'])
 test('petitconn_abstract_dao_tests', abstract_dao_tests, args: [])

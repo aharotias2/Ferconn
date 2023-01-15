@@ -26,9 +26,26 @@ class WpTable : Petitconn.ColumnSet {
 }
 
 int main(string[] argv) {
+    switch (argv[1]) {
+      case "1":
+        test_1();
+        break;
+      case "2":
+        test_2();
+        break;
+    }
+    return 0;
+}
+
+void test_1() {
     var table = new WpTable();
     table["id"] = (long) 1;
     table["title"] = "hoge";
     print("%ld, %s\n", table["id"].get_long(), table["title"].get_string());
-    return 0;
+}
+
+void test_2() {
+    var table = new WpTable();
+    table["id"] = (long) 1;
+    print("%ld, %s\n", table["id"].get_long(), table["title"].get_string());
 }
