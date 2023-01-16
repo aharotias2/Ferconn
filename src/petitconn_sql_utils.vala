@@ -57,10 +57,10 @@ namespace Petitconn.SqlUtils {
                 null);
         Gda.Set params;
         stmt.get_parameters(out params);
-        foreach (string key in condition.keys) {
+        foreach (var entry in condition.entries) {
             Gda.Holder holder;
-            holder = params.get_holder(key);
-            holder.set_value(condition[key]);
+            holder = params.get_holder(entry.key);
+            holder.set_value(entry.value);
         }
         return conn.statement_execute_select(stmt, params);
     }

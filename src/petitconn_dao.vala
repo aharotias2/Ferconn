@@ -37,7 +37,18 @@ namespace Petitconn {
             for (int i = 0; i < num_rows; i++) {
                 var rec = new Gee.HashMap<string, Value?>();
                 for (int j = 0; j < num_cols; j++) {
-                    rec[column_names[j]] = data.get_value_at(j, i);
+                    Value val = data.get_value_at(j, i);
+                    // I don't really understand the gda specs, and I don't know how to handle time-based values,
+                    // so I'll convert them to strings for now. It's "TODO"
+                    // I feel like it will probably be solved if the version of gda in the Ubuntu repository goes up.
+                    if (val.type() == typeof(Gda.Timestamp)) {
+                        var ts = val as Gda.Timestamp;
+                        string tss = "%04d-%02d-%02d %02d:%02d:%02d".printf(
+                                ts.year, ts.month, ts.day, ts.hour, ts.minute, ts.second);
+                        rec[column_names[j]] = tss;
+                    } else {
+                        rec[column_names[j]] = val;
+                    }
                 }
                 result.add(rec);
             }
