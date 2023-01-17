@@ -2,7 +2,7 @@ project('com.github.aharotias2.petitconn', 'vala', 'c', version: '1.0.0')
 
 inc = include_directories('.')
 
-libpetitconn = shared_library(
+libpetitconn = static_library(
   'petitconn',
   'src/petitconn_dao.vala',
   'src/petitconn_column_set.vala',

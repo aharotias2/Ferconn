@@ -89,7 +89,6 @@ namespace Petitconn.SqlUtils {
             where_clause.add(SqlUtils.create_set_expression(name, condition[name], "_cond"));
         }
         sql.append(" where ").append(string.joinv(" and ", where_clause.to_array()));
-        debug("WpTermTaxonomyDao.update: %s", sql.str);
         var parser = conn.create_parser();
         var stmt = parser.parse_string(sql.str, null);
         Gda.Set params;
