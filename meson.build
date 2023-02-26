@@ -4,7 +4,7 @@ inc = include_directories('.')
 
 libpetitconn = static_library(
   'petitconn',
-  'src/petitconn_dao.vala',
+  'src/petitconn_repository.vala',
   'src/petitconn_column_set.vala',
   'src/petitconn_gee_utils.vala',
   'src/petitconn_sealed_map.vala',
@@ -39,10 +39,10 @@ column_set_tests = executable(
   ]
 )
 
-abstract_dao_tests = executable(
-  'petitconn_dao_tests',
-  'tests/petitconn_dao_tests.vala',
-  'src/petitconn_dao.vala',
+abstract_repository_tests = executable(
+  'petitconn_repository_tests',
+  'tests/petitconn_repository_tests.vala',
+  'src/petitconn_repository.vala',
   'src/petitconn_column_set.vala',
   'src/petitconn_sealed_map.vala',
   'src/petitconn_sql_utils.vala',
@@ -58,4 +58,4 @@ abstract_dao_tests = executable(
 
 test('petitconn_column_set_tests', column_set_tests, args: ['1'])
 test('petitconn_column_set_tests', column_set_tests, args: ['2'])
-test('petitconn_abstract_dao_tests', abstract_dao_tests, args: [])
+test('petitconn_abstract_repository_tests', abstract_repository_tests, args: [])

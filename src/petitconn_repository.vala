@@ -20,10 +20,10 @@
  */
 
 namespace Petitconn {
-    public class Dao : Object {
+    public class Repository : Object {
         public Gda.Connection conn { get; set; }
 
-        public Dao(Gda.Connection conn) {
+        public Repository(Gda.Connection conn) {
             this.conn = conn;
         }
         

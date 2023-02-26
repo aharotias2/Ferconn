@@ -52,13 +52,13 @@ int main(string[] argv) {
             printerr("connection was not established\n");
             return 1;
         }
-        Petitconn.Dao dao = new Petitconn.Dao(conn);
+        Petitconn.Repository repository = new Petitconn.Repository(conn);
         
         // test insert
         TestTable dto1 = new TestTable();
         dto1.id = 0;
         dto1.name = "Tarou";
-        bool is_insert_success = dao.insert(dto1);
+        bool is_insert_success = repository.insert(dto1);
         assert(is_insert_success);
         
         // test update
@@ -66,11 +66,11 @@ int main(string[] argv) {
         dto2.id = 0;
         TestTable dto3 = new TestTable();
         dto3.name = "Jirou";
-        int update_count = dao.update(dto2, dto3);
+        int update_count = repository.update(dto2, dto3);
         assert(update_count == 1);
         
         // test select
-        var list = dao.select_as_map(dto2);
+        var list = repository.select_as_map(dto2);
         assert(list.size == 1);
         
         // test set_values
@@ -79,11 +79,11 @@ int main(string[] argv) {
         assert(dto4.name == "Jirou");
         
         // test delete
-        int delete_count = dao.delete(dto2);
+        int delete_count = repository.delete(dto2);
         assert(delete_count == 1);
         
         // test select again
-        list = dao.select_as_map(dto2);
+        list = repository.select_as_map(dto2);
         assert(list.size == 0);
         
         return 0;
